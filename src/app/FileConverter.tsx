@@ -297,3 +297,9 @@ export function FileConverter() {
         </>
     );
 }
+
+declare global {
+    interface Window {
+        adsbygoogle: any;
+    }
+}
