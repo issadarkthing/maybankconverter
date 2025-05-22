@@ -1,5 +1,3 @@
-"use server";
-
 export async function parseStatement(file: ArrayBufferLike) {
     const extracted = await load(file);
     const textContent = extracted.map((x) => x.pageContent).join("\n");
@@ -155,11 +153,8 @@ async function load(file: ArrayBufferLike) {
 
 async function getPdfJS() {
     try {
-        const pdfjs = await import(
-            //@ts-ignore
-            "pdf-parse/lib/pdf.js/v1.10.100/build/pdf.js"
-        );
-        return { getDocument: pdfjs.getDocument, version: pdfjs.version };
+        //@ts-ignore
+        return { getDocument: PDFJS.getDocument };
     } catch (e) {
         console.error(e);
         throw new Error(

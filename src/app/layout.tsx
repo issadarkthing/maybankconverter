@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -142,11 +143,12 @@ export default function RootLayout({
                     name="google-adsense-account"
                     content="ca-pub-9907224249755810"
                 />
-                <script
+                <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907224249755810"
                     crossOrigin="anonymous"
                 />
+                <Script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@1.10.100/build/pdf.min.js" />
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}

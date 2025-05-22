@@ -6,7 +6,7 @@ import {
     FiAlertCircle,
     FiCheckCircle,
 } from "react-icons/fi";
-import { parseStatement } from "@/actions/parseStatement";
+import { parseStatement } from "@/utils/parseStatement";
 import { useState, useEffect } from "react";
 import Script from "next/script";
 
