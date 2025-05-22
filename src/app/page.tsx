@@ -30,7 +30,7 @@ export const metadata: Metadata = {
             "Free tool to convert Maybank PDF statements to CSV format for financial tracking",
     },
     alternates: {
-        canonical: "https://maybankconverter.yourdomain.com",
+        canonical: "https://maybankconverter.vercel.com",
     },
 };
 
