@@ -87,13 +87,19 @@ export default function Home() {
     };
 
     const downloadCsv = () => {
-        if (!csvData) return;
+        if (!csvData || !file) return;
+
+        // Extract filename without extension
+        const fileNameWithoutExtension = file.name
+            .split(".")
+            .slice(0, -1)
+            .join(".");
 
         const blob = new Blob([csvData], { type: "text/csv" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "maybank_transactions.csv";
+        a.download = `maybankconverter_${fileNameWithoutExtension}.csv`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
