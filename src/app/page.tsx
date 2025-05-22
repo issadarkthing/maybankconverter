@@ -1,5 +1,6 @@
 import { FileConverter } from "./FileConverter";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 // SEO metadata
 export const metadata: Metadata = {
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
         "Maybank transaction export",
         "Maybank statement parser",
         "bank statement converter",
+        "free Maybank converter",
+        "online Maybank statement converter",
+        "free PDF to CSV converter",
+        "online CSV conversion tool",
+        "free Maybank statement tool",
+        "free online bank statement converter",
+        "free financial data export",
+        "online transaction extractor",
     ],
     openGraph: {
         title: "Maybank Statement to CSV Converter",
@@ -34,6 +43,22 @@ export const metadata: Metadata = {
     },
 };
 
+// JSON-LD structured data
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Maybank Statement to CSV Converter",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+    },
+    description:
+        "Free online tool to convert Maybank bank statements from PDF to CSV format for easy import into financial software.",
+};
+
 export default function Home() {
     return (
         <>
@@ -45,9 +70,12 @@ export default function Home() {
                             Statement to CSV Converter
                         </h1>
                         <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            Convert your Maybank bank statements from PDF to CSV
-                            format for easy import into Excel, Google Sheets, or
-                            financial software
+                            <span className="font-semibold">
+                                Free online tool
+                            </span>{" "}
+                            to convert your Maybank bank statements from PDF to
+                            CSV format for easy import into Excel, Google
+                            Sheets, or financial software
                         </p>
                     </header>
 
@@ -87,7 +115,8 @@ export default function Home() {
 
                     <section className="mt-12 mb-12 max-w-3xl mx-auto">
                         <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                            How to Convert Your Maybank Statement to CSV
+                            How to Convert Your Maybank Statement to CSV - Free
+                            & Online
                         </h2>
                         <ol className="text-gray-700 dark:text-gray-300 space-y-4 list-decimal list-inside">
                             <li className="mb-2">
@@ -101,8 +130,8 @@ export default function Home() {
                                 <span className="font-medium">
                                     Upload your statement:
                                 </span>{" "}
-                                Use the file uploader above to select your
-                                Maybank statement PDF
+                                Use the free online file uploader above to
+                                select your Maybank statement PDF
                             </li>
                             <li className="mb-2">
                                 <span className="font-medium">
@@ -130,15 +159,15 @@ export default function Home() {
 
                     <section className="mb-12 max-w-3xl mx-auto">
                         <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                            About This Maybank Converter Tool
+                            About This Free Online Maybank Converter Tool
                         </h2>
                         <div className="text-gray-700 dark:text-gray-300 space-y-3">
                             <p>
-                                This free online tool converts Maybank bank
-                                statements from PDF format to CSV
-                                (Comma-Separated Values) format. The conversion
-                                happens entirely in your browser - your
-                                financial data never leaves your device.
+                                This <strong>100% free online tool</strong>{" "}
+                                converts Maybank bank statements from PDF format
+                                to CSV (Comma-Separated Values) format. The
+                                conversion happens entirely in your browser -
+                                your financial data never leaves your device.
                             </p>
                             <p>
                                 The converter extracts transaction dates,
@@ -157,9 +186,9 @@ export default function Home() {
 
                     <footer className="mt-8 text-center border-t border-gray-200 dark:border-gray-700 pt-8">
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                            This Maybank statement to CSV converter processes
-                            all files locally in your browser. No data is
-                            uploaded to any server or stored anywhere.
+                            This free online Maybank statement to CSV converter
+                            processes all files locally in your browser. No data
+                            is uploaded to any server or stored anywhere.
                         </p>
                         <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                             Not affiliated with Maybank. For personal use only.
@@ -169,32 +198,9 @@ export default function Home() {
             </div>
 
             {/* Structured data for SEO */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "SoftwareApplication",
-                        name: "Maybank Statement to CSV Converter",
-                        applicationCategory: "FinanceApplication",
-                        operatingSystem: "Web",
-                        offers: {
-                            "@type": "Offer",
-                            price: "0",
-                            priceCurrency: "USD",
-                        },
-                        description:
-                            "Free online tool to convert Maybank bank statements from PDF to CSV format for easy import into financial software.",
-                    }),
-                }}
-            />
+            <Script id="schema-jsonld" type="application/ld+json">
+                {JSON.stringify(jsonLd)}
+            </Script>
         </>
     );
-}
-
-// Extend the Window interface to include adsbygoogle
-declare global {
-    interface Window {
-        adsbygoogle: any;
-    }
 }
