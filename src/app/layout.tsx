@@ -138,6 +138,10 @@ export default function RootLayout({
                     href="https://fonts.gstatic.com"
                     crossOrigin="anonymous"
                 />
+                <meta
+                    name="google-adsense-account"
+                    content="ca-pub-9907224249755810"
+                />
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
