@@ -108,8 +108,8 @@ export default function Home() {
                                 <span className="font-medium">
                                     Convert to CSV:
                                 </span>{" "}
-                                Click the "Convert to CSV" button to process
-                                your statement
+                                Click the &quot;Convert to CSV&quot; button to
+                                process your statement
                             </li>
                             <li className="mb-2">
                                 <span className="font-medium">
@@ -144,8 +144,8 @@ export default function Home() {
                                 The converter extracts transaction dates,
                                 details, amounts, and balances from Maybank
                                 statements and organizes them into a structured
-                                CSV format that's compatible with most financial
-                                software.
+                                CSV format that&apos;s compatible with most
+                                financial software.
                             </p>
                             <p>
                                 Perfect for Maybank account holders who want to
