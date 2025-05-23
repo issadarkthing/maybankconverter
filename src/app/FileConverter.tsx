@@ -8,7 +8,7 @@ import {
     FiGrid,
 } from "react-icons/fi";
 import { parseStatement } from "@/utils/parseStatement";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import * as XLSX from "xlsx";
 
 export function FileConverter() {
@@ -17,28 +17,41 @@ export function FileConverter() {
     const [error, setError] = useState<string | null>(null);
     const [csvData, setCsvData] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [adsLoaded, setAdsLoaded] = useState(false);
     const [transactions, setTransactions] = useState<any[]>([]);
 
-    // Initialize Google AdSense when component mounts
+    // Use ref to track if ads have been initialized
+    const adsInitialized = useRef(false);
+
+    // Initialize Google AdSense when component mounts - only once
     useEffect(() => {
-        const loadAdsense = () => {
+        // Only run this once and only in the browser
+        if (typeof window !== "undefined" && !adsInitialized.current) {
             try {
-                if (window.adsbygoogle) {
-                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                // Only push if window.adsbygoogle exists and there are actual adsbygoogle ins elements
+                if (
+                    window.adsbygoogle &&
+                    document.querySelectorAll(".adsbygoogle").length > 0
+                ) {
+                    // Check if any ins elements don't have data-ad-status
+                    const uninitializedAds = document.querySelectorAll(
+                        ".adsbygoogle:not([data-ad-status])"
+                    );
+
+                    if (uninitializedAds.length > 0) {
+                        (window.adsbygoogle = window.adsbygoogle || []).push(
+                            {}
+                        );
+                    }
                 }
-                setAdsLoaded(true);
+
+                adsInitialized.current = true;
             } catch (error) {
                 console.error("AdSense error:", error);
             }
-        };
-
-        // Only load AdSense if it hasn't already been loaded
-        if (!adsLoaded && typeof window !== "undefined") {
-            loadAdsense();
         }
-    }, [adsLoaded]);
+    }, []);
 
+    // Rest of the component remains unchanged
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0] || null;
         setFile(selectedFile);
@@ -159,7 +172,7 @@ export function FileConverter() {
 
     return (
         <>
-            {/* Google AdSense Script - unchanged */}
+            {/* You can add an AdSense ins element here if needed */}
             <div className="p-8">
                 <div
                     className={`mb-8 border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
@@ -226,6 +239,7 @@ export function FileConverter() {
                     </div>
                 </div>
 
+                {/* Rest of your component remains unchanged */}
                 <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
                     <button
                         onClick={convertToCsv}
