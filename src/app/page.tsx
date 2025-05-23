@@ -63,6 +63,11 @@ const jsonLd = {
     },
     description:
         "Free online tool to convert Maybank bank statements from PDF to CSV or Excel format for easy import into financial software.",
+    author: {
+        "@type": "Person",
+        name: "Raziman",
+    },
+    copyrightYear: new Date().getFullYear(),
 };
 
 export default function Home() {
@@ -214,7 +219,7 @@ export default function Home() {
                                 only.
                             </p>
 
-                            <div className="flex justify-center space-x-4 text-xs">
+                            <div className="flex justify-center space-x-4 text-xs mb-4">
                                 <a
                                     href="/disclaimer"
                                     className="text-yellow-600 hover:text-yellow-500 dark:text-yellow-500 dark:hover:text-yellow-400 underline transition-colors"
@@ -222,6 +227,11 @@ export default function Home() {
                                     Legal Disclaimer
                                 </a>
                             </div>
+
+                            <p className="text-xs text-gray-600 dark:text-gray-500">
+                                © {new Date().getFullYear()} Raziman. All
+                                rights reserved.
+                            </p>
                         </div>
                     </footer>
                 </div>
