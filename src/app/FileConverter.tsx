@@ -5,9 +5,11 @@ import {
     FiFile,
     FiAlertCircle,
     FiCheckCircle,
+    FiGrid,
 } from "react-icons/fi";
 import { parseStatement } from "@/utils/parseStatement";
 import { useState, useEffect } from "react";
+import * as XLSX from "xlsx";
 
 export function FileConverter() {
     const [file, setFile] = useState<File | null>(null);
@@ -16,6 +18,7 @@ export function FileConverter() {
     const [csvData, setCsvData] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [adsLoaded, setAdsLoaded] = useState(false);
+    const [transactions, setTransactions] = useState<any[]>([]);
 
     // Initialize Google AdSense when component mounts
     useEffect(() => {
@@ -41,6 +44,7 @@ export function FileConverter() {
         setFile(selectedFile);
         setError(null);
         setCsvData(null);
+        setTransactions([]);
     };
 
     const handleDragOver = (e: React.DragEvent) => {
@@ -61,6 +65,7 @@ export function FileConverter() {
             setFile(e.dataTransfer.files[0]);
             setError(null);
             setCsvData(null);
+            setTransactions([]);
         }
     };
 
@@ -75,26 +80,33 @@ export function FileConverter() {
 
         try {
             const statement = await parseStatement(await file.arrayBuffer());
-            const transactions = statement.transactions
-                .map((transaction) => {
+            const parsedTransactions = statement.transactions.map(
+                (transaction) => {
                     const row = {
                         date: transaction.date,
-                        details: `${transaction.details} ${transaction.descriptions.join(" ")}`,
+                        details:
+                            `${transaction.details} ${transaction.descriptions.join(" ")}`
+                                .trim()
+                                .replace(/\s+/g, " "),
                         amount: `${transaction.sign}${transaction.amount}`,
                         balance: transaction.balance,
                     };
+                    return row;
+                }
+            );
 
-                    // remove extra spaces in details
-                    row.details = row.details.trim().replace(/\s+/g, " ");
+            setTransactions(parsedTransactions);
 
-                    return Object.values(row)
+            const csvRows = parsedTransactions
+                .map((row) =>
+                    Object.values(row)
                         .map((value) => `"${value}"`)
-                        .join(",");
-                })
+                        .join(",")
+                )
                 .join("\n");
-            const header = `"Date","Details","Amount","Balance"`;
 
-            setCsvData(`${header}\n${transactions}`);
+            const header = `"Date","Details","Amount","Balance"`;
+            setCsvData(`${header}\n${csvRows}`);
         } catch (err) {
             setError(
                 "Failed to process the file. Please make sure it's a valid Maybank statement."
@@ -124,6 +136,27 @@ export function FileConverter() {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     };
+
+    const downloadExcel = () => {
+        if (transactions.length === 0 || !file) return;
+
+        // Extract filename without extension
+        const fileNameWithoutExtension = file.name
+            .split(".")
+            .slice(0, -1)
+            .join(".");
+
+        // Create worksheet
+        const ws = XLSX.utils.json_to_sheet(transactions);
+
+        // Create workbook
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Transactions");
+
+        // Generate Excel file
+        XLSX.writeFile(wb, `maybankconverter_${fileNameWithoutExtension}.xlsx`);
+    };
+
     return (
         <>
             {/* Google AdSense Script - unchanged */}
@@ -209,18 +242,28 @@ export function FileConverter() {
                                 Processing...
                             </span>
                         ) : (
-                            "Convert to CSV"
+                            "Convert Statement"
                         )}
                     </button>
 
                     {csvData && (
-                        <button
-                            onClick={downloadCsv}
-                            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
-                        >
-                            <FiDownload />
-                            Download CSV
-                        </button>
+                        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                            <button
+                                onClick={downloadCsv}
+                                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+                            >
+                                <FiDownload />
+                                Download CSV
+                            </button>
+
+                            <button
+                                onClick={downloadExcel}
+                                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+                            >
+                                <FiGrid />
+                                Download Excel
+                            </button>
+                        </div>
                     )}
                 </div>
 
@@ -242,7 +285,7 @@ export function FileConverter() {
                             </p>
                             <p className="text-green-700 dark:text-green-300 text-xs mt-1">
                                 Your statement has been converted and is ready
-                                to download.
+                                to download as CSV or Excel.
                             </p>
                         </div>
                     </div>
