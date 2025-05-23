@@ -170,7 +170,7 @@ export function FileConverter() {
                                 className={`relative inline-flex items-center px-6 py-3 ${
                                     file
                                         ? "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200"
-                                        : "bg-yellow-600 hover:bg-yellow-700 text-white"
+                                        : "bg-yellow-500 hover:bg-yellow-700 text-black"
                                 } rounded-lg transition-colors cursor-pointer font-medium text-sm`}
                             >
                                 <span className="z-10 relative">
