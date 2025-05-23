@@ -148,6 +148,10 @@ export default function RootLayout({
                     name="apple-mobile-web-app-title"
                     content="Statement Converter"
                 />
+                <meta
+                    name="google-site-verification"
+                    content="zOrwNzOeSAmip7G9g47N6l05Jx7z43JD6ojpkkIA2Go"
+                />
                 <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907224249755810"
