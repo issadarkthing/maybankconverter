@@ -201,15 +201,28 @@ export default function Home() {
                     </section>
 
                     <footer className="mt-8 text-center border-t border-gray-300 dark:border-gray-700 pt-8">
-                        <p className="text-sm text-gray-700 dark:text-gray-400">
-                            This free online Maybank statement to CSV/Excel
-                            converter processes all files locally in your
-                            browser. No data is uploaded to any server or stored
-                            anywhere.
-                        </p>
-                        <p className="text-xs text-gray-600 dark:text-gray-500 mt-2">
-                            Not affiliated with Maybank. For personal use only.
-                        </p>
+                        <div className="max-w-3xl mx-auto">
+                            <p className="text-sm text-gray-700 dark:text-gray-400 mb-4">
+                                This free online Maybank statement to CSV/Excel
+                                converter processes all files locally in your
+                                browser. No data is uploaded to any server or
+                                stored anywhere.
+                            </p>
+
+                            <p className="text-xs text-gray-600 dark:text-gray-500 mb-4">
+                                Not affiliated with Maybank. For personal use
+                                only.
+                            </p>
+
+                            <div className="flex justify-center space-x-4 text-xs">
+                                <a
+                                    href="/disclaimer"
+                                    className="text-yellow-600 hover:text-yellow-500 dark:text-yellow-500 dark:hover:text-yellow-400 underline transition-colors"
+                                >
+                                    Legal Disclaimer
+                                </a>
+                            </div>
+                        </div>
                     </footer>
                 </div>
             </div>
