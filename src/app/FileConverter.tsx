@@ -139,7 +139,7 @@ export function FileConverter() {
                     onDrop={handleDrop}
                 >
                     <div className="flex flex-col items-center justify-center">
-                        <FiUploadCloud className="w-12 h-12 text-yellow-600 mb-4" />
+                        <FiUploadCloud className="w-12 h-12 text-yellow-500 mb-4" />
 
                         <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-2">
                             {file
@@ -200,7 +200,7 @@ export function FileConverter() {
                         className={`w-full sm:w-auto px-6 py-3 rounded-lg font-medium transition-all ${
                             !file || isProcessing
                                 ? "bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-300 cursor-not-allowed"
-                                : "bg-yellow-600 hover:bg-yellow-700 text-white shadow-md hover:shadow-lg"
+                                : "bg-yellow-400 hover:bg-yellow-700 text-black shadow-md hover:shadow-lg"
                         }`}
                     >
                         {isProcessing ? (

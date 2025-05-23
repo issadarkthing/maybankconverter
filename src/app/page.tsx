@@ -66,7 +66,7 @@ export default function Home() {
                 <div className="container mx-auto px-4 py-12 max-w-5xl">
                     <header className="text-center mb-12">
                         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-                            <span className="text-yellow-700">Maybank</span>{" "}
+                            <span className="text-yellow-500">Maybank</span>{" "}
                             Statement to CSV Converter
                         </h1>
                         <p className="text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
