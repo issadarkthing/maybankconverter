@@ -1,6 +1,7 @@
 import { FileConverter } from "./FileConverter";
 import type { Metadata } from "next";
 import Script from "next/script";
+import MaybankStatementConverterIcon from "./Icon";
 
 // SEO metadata
 export const metadata: Metadata = {
@@ -70,9 +71,14 @@ export default function Home() {
             <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
                 <div className="container mx-auto px-4 py-12 max-w-5xl">
                     <header className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-                            <span className="text-yellow-500">Maybank</span>{" "}
-                            Statement to CSV/Excel Converter
+                        <h1 className="flex items-center justify-center text-4xl font-bold text-gray-900 dark:text-white mb-3">
+                            <span className="mr-3">
+                                <MaybankStatementConverterIcon className="w-10 h-10 inline-block" />
+                            </span>
+                            <span>
+                                <span className="text-yellow-500">Maybank</span>{" "}
+                                Statement to CSV/Excel Converter
+                            </span>
                         </h1>
                         <p className="text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
                             <span className="font-semibold">
@@ -83,7 +89,6 @@ export default function Home() {
                             Google Sheets, or financial software
                         </p>
                     </header>
-
                     <section className="mb-8 text-center">
                         <div className="bg-yellow-100 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-800 rounded-lg p-4 max-w-3xl mx-auto">
                             <h2 className="text-xl font-semibold text-yellow-950 dark:text-yellow-200 mb-2">

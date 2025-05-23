@@ -144,6 +144,10 @@ export default function RootLayout({
                     name="google-adsense-account"
                     content="ca-pub-9907224249755810"
                 />
+                <meta
+                    name="apple-mobile-web-app-title"
+                    content="Statement Converter"
+                />
                 <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907224249755810"
