@@ -31,8 +31,8 @@ export default function DisclaimerPage() {
                                 an independent tool provided for convenience and
                                 is not affiliated with, endorsed by, or
                                 sponsored by Malayan Banking Berhad (Maybank).
-                                This service is provided "as is" without any
-                                warranties, expressed or implied.
+                                This service is provided &quot;as is&quot;
+                                without any warranties, expressed or implied.
                             </p>
                         </section>
 
@@ -95,7 +95,7 @@ export default function DisclaimerPage() {
                                     Verify the accuracy of all converted data
                                 </li>
                                 <li>
-                                    Comply with Maybank's terms of service
+                                    Comply with Maybank&apos;s terms of service
                                     regarding your statement data
                                 </li>
                                 <li>
@@ -136,12 +136,12 @@ export default function DisclaimerPage() {
                                 Intellectual Property Notice
                             </h2>
                             <p>
-                                "Maybank" is a registered trademark of Malayan
-                                Banking Berhad. All references to Maybank are
-                                for descriptive purposes only to indicate
-                                compatibility with Maybank statement formats.
-                                This tool is not claiming any rights to the
-                                Maybank name, logo, or other intellectual
+                                &quot;Maybank&quot; is a registered trademark of
+                                Malayan Banking Berhad. All references to
+                                Maybank are for descriptive purposes only to
+                                indicate compatibility with Maybank statement
+                                formats. This tool is not claiming any rights to
+                                the Maybank name, logo, or other intellectual
                                 property.
                             </p>
                         </section>
