@@ -62,14 +62,14 @@ const jsonLd = {
 export default function Home() {
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+            <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
                 <div className="container mx-auto px-4 py-12 max-w-5xl">
                     <header className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-3">
-                            <span className="text-yellow-500">Maybank</span>{" "}
+                        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
+                            <span className="text-yellow-700">Maybank</span>{" "}
                             Statement to CSV Converter
                         </h1>
-                        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        <p className="text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
                             <span className="font-semibold">
                                 Free online tool
                             </span>{" "}
@@ -80,11 +80,11 @@ export default function Home() {
                     </header>
 
                     <section className="mb-8 text-center">
-                        <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-800 rounded-lg p-4 max-w-3xl mx-auto">
-                            <h2 className="text-xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+                        <div className="bg-yellow-100 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-800 rounded-lg p-4 max-w-3xl mx-auto">
+                            <h2 className="text-xl font-semibold text-yellow-950 dark:text-yellow-200 mb-2">
                                 Why Convert Maybank Statements to CSV?
                             </h2>
-                            <ul className="text-left text-sm space-y-2 list-disc list-inside text-gray-700 dark:text-gray-300">
+                            <ul className="text-left text-sm space-y-2 list-disc list-inside text-gray-900 dark:text-gray-300">
                                 <li>
                                     Easy import to spreadsheet software like
                                     Excel or Google Sheets
@@ -109,16 +109,16 @@ export default function Home() {
                         </div>
                     </section>
 
-                    <main className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden">
+                    <main className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-300 dark:border-gray-700">
                         <FileConverter />
                     </main>
 
                     <section className="mt-12 mb-12 max-w-3xl mx-auto">
-                        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                             How to Convert Your Maybank Statement to CSV - Free
                             & Online
                         </h2>
-                        <ol className="text-gray-700 dark:text-gray-300 space-y-4 list-decimal list-inside">
+                        <ol className="text-gray-900 dark:text-gray-300 space-y-4 list-decimal list-inside">
                             <li className="mb-2">
                                 <span className="font-medium">
                                     Download your statement:
@@ -158,10 +158,10 @@ export default function Home() {
                     </section>
 
                     <section className="mb-12 max-w-3xl mx-auto">
-                        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                             About This Free Online Maybank Converter Tool
                         </h2>
-                        <div className="text-gray-700 dark:text-gray-300 space-y-3">
+                        <div className="text-gray-900 dark:text-gray-300 space-y-3">
                             <p>
                                 This <strong>100% free online tool</strong>{" "}
                                 converts Maybank bank statements from PDF format
@@ -184,13 +184,13 @@ export default function Home() {
                         </div>
                     </section>
 
-                    <footer className="mt-8 text-center border-t border-gray-200 dark:border-gray-700 pt-8">
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <footer className="mt-8 text-center border-t border-gray-300 dark:border-gray-700 pt-8">
+                        <p className="text-sm text-gray-700 dark:text-gray-400">
                             This free online Maybank statement to CSV converter
                             processes all files locally in your browser. No data
                             is uploaded to any server or stored anywhere.
                         </p>
-                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
+                        <p className="text-xs text-gray-600 dark:text-gray-500 mt-2">
                             Not affiliated with Maybank. For personal use only.
                         </p>
                     </footer>
