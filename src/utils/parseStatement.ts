@@ -3,7 +3,7 @@ export async function parseStatement(file: ArrayBufferLike) {
     const textContent = extracted.map((x) => x.pageContent).join("\n");
     const lines = textContent.split("\n");
     const transactionRegex =
-        /^(\d{2}\/\d{2}\/\d{2})(.+?)(\d{1,3}(?:,\d{3})*\.\d{2})([+-])(\d{1,3}(?:,\d{3})*\.\d{2})$/gm;
+        /^(\d{2}\/\d{2}(?:\/\d{2})?)(.+?)(\d{1,3}(?:,\d{3})*\.\d{2})([+-])((?:\d{1,3}(?:,\d{3})*|\d*)?\.\d{2})$/gm;
     const descriptionRegex = /^\s{3}/gm;
 
     let transaction = {
@@ -58,7 +58,7 @@ export async function parseStatement(file: ArrayBufferLike) {
             transaction.balance = parseNumber(balance);
         } else if (line.match(descriptionRegex)) {
             transaction.descriptions.push(line.trim());
-        } else if (line.startsWith("ENDING BALANCE")) {
+        } else if (line.startsWith("ENDING BALANCE :")) {
             flush();
             const [, balance] = line.split(":");
             statementInfo.endingBalance = parseNumber(balance);
