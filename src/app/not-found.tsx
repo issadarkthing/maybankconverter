@@ -22,14 +22,15 @@ export default function NotFound() {
                         </span>
                     </h1>
                     <p className="text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
-                        Oops! The page you're looking for doesn't exist.
+                        Oops! The page you&apos;re looking for doesn&apos;t
+                        exist.
                     </p>
                 </header>
 
                 <main className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-300 dark:border-gray-700 p-8 text-center">
                     <div className="py-12">
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                            Looks like you've taken a wrong turn
+                            Looks like you&apos;ve taken a wrong turn
                         </h2>
                         <p className="text-gray-700 dark:text-gray-300 mb-8">
                             The page you requested could not be found. You might
