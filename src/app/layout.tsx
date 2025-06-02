@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -133,6 +133,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <GoogleTagManager gtmId="GTM-TJQCH5KP" />
                 {/* Any additional scripts needed globally */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link

@@ -10,6 +10,7 @@ import {
 import { parseStatement } from "@/utils/parseStatement";
 import { useState, useEffect, useRef } from "react";
 import * as XLSX from "xlsx";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export function FileConverter() {
     const [file, setFile] = useState<File | null>(null);
@@ -53,6 +54,7 @@ export function FileConverter() {
 
     // Rest of the component remains unchanged
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        sendGTMEvent({ event: "file_selected" });
         const selectedFile = e.target.files?.[0] || null;
         setFile(selectedFile);
         setError(null);
@@ -83,6 +85,8 @@ export function FileConverter() {
     };
 
     const convertToCsv = async () => {
+        sendGTMEvent({ event: "convert_statement" });
+
         if (!file) {
             setError("Please select a file first");
             return;
@@ -120,17 +124,21 @@ export function FileConverter() {
 
             const header = `"Date","Details","Amount","Balance"`;
             setCsvData(`${header}\n${csvRows}`);
+            sendGTMEvent({ event: "conversion_success" });
         } catch (err) {
             setError(
                 "Failed to process the file. Please make sure it's a valid Maybank statement."
             );
             console.error(err);
+            sendGTMEvent({ event: "conversion_error", error: err });
         } finally {
             setIsProcessing(false);
         }
     };
 
     const downloadCsv = () => {
+        sendGTMEvent({ event: "download_csv" });
+
         if (!csvData || !file) return;
 
         // Extract filename without extension
@@ -151,6 +159,8 @@ export function FileConverter() {
     };
 
     const downloadExcel = () => {
+        sendGTMEvent({ event: "download_excel" });
+
         if (transactions.length === 0 || !file) return;
 
         // Extract filename without extension
